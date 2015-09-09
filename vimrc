@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -32,25 +31,18 @@ Plugin 'terryma/vim-multiple-cursors' " for multi selection
 Plugin 'luochen1990/rainbow' " for parentheses colors
 Plugin 'HTML-AutoCloseTag' " Auto close tag for html
 Plugin 'othree/html5.vim' " for html5
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets' " snippets for neocomplete
+"Plugin 'nvie/vim-flake8' " pyython stnax checker
 Plugin 'hail2u/vim-css3-syntax' " for css
-Plugin 'andviro/flake8-vim' " for python syntax checker 
+"Plugin 'andviro/flake8-vim' " for python syntax checker 
 "Plugin 'Valloric/YouCompleteMe' " auto completion
 Plugin 'ctrlpvim/ctrlp.vim' " buffer
+Plugin 'FelikZ/ctrlp-py-matcher' " ctrlp fast matcher base on python
+"Plugin 'altercation/vim-colors-solarized' " Vim colorscheme
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief helpp
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this linej
-"
 """"""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""
@@ -76,11 +68,13 @@ set encoding=utf8
 " use unix as the standard file type
 set ffs=unix,dos,mac
 
+
+" open new split panes to right and bottom which feels more natural than vim's
+" default
+set splitbelow
+set splitright
+
 " >> VIM USER INTEFACE
-" Enable colorscheme
-syntax on
-colorscheme monokai " colorscheme is monokai. nice!
-set background=dark
 
 " visual autocomplete for command menu
 set wildmenu
@@ -106,16 +100,35 @@ set mat=2
 " for tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" open/close nerdtree in normal mode
+nmap <F3> :NERDTreeToggle<CR>
+
+" For navigating split navigations or etc
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " auto check file for errors on write
-let g:PyFlakeOnWrite=1
-" List of checker used
-let g:PyFlakeCheckers='pep8,mccabe,frosted'
-
+"autocmd BufWritePost *.py call Flake8()
+"let g:PyFlakeOnWrite=1
+"" List of checker used
+"let g:PyFlakeCheckers='pep8,mccabe,frosted'
+"
+"let g:PyFlakeDisabledMessages='E127'
+"let g:PyFlakeDisabledMessages='E128'
+"let g:PyFlakeDisabledMessages='E501'
+"let g:PyFlakeDisabledMessages='E502'
 " start multi cursor mode
-let g:muilti_cursor_start_key='<F6>'
+"let g:muilti_cursor_start_key='<C-o>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-" rainbow parentheses
+"Rainbow parentheses
 let g:rainbow_active=1
+
+"airline 
+let g:airline#extension#tabline#enabled=1
 
 " indent guides
 let g:indentLine_char = '|'
@@ -147,3 +160,9 @@ set si
 " wrap lines
 set wrap
 
+
+" Enable colorscheme
+set background=dark
+syntax on
+colorscheme monokai " colorscheme is monokai. nice!
+"let g:solarized_termcolors=256 " use 256 color
