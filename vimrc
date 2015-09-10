@@ -20,17 +20,22 @@ Plugin 'scrooloose/nerdcommenter' " For commenting
 Plugin 'easymotion/vim-easymotion' " For easy movement 
 Plugin 'Raimondi/delimitMate' " for auto closing of quotes, braces, etc
 Plugin 'mattn/emmet-vim' " for emmet
-Plugin 'MarcWeber/vim-addon-mw-utils' " pluginns for snipmate
-Plugin 'tomtom/tlib_vim' " pluginns for snipmate
-Plugin 'garbas/vim-snipmate' " pluginns for snipmate
-Plugin 'honza/vim-snippets' " pluginns for snipmate
-Plugin 'Yggdroot/indentLine' " for indentation guide
+Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'MarcWeber/vim-addon-mw-utils' " pluginns for snipmate
+"Plugin 'tomtom/tlib_vim' " pluginns for snipmate
+"Plugin 'garbas/vim-snipmate' " pluginns for snipmate
+"Plugin 'honza/vim-snippets' " pluginns for snipmate
+"Plugin 'Yggdroot/indentLine' " for indentation guide
 Plugin 'majutsushi/tagbar' " for summary of code
 Plugin 'ap/vim-css-color' " show colors in css
 Plugin 'terryma/vim-multiple-cursors' " for multi selection
 Plugin 'luochen1990/rainbow' " for parentheses colors
 Plugin 'HTML-AutoCloseTag' " Auto close tag for html
 Plugin 'othree/html5.vim' " for html5
+Plugin 'gregsexton/MatchTag' " for html matching tags
+"Plugin 'TaskList.vim' " Todo list
+"Plugin 'ervandew/supertab'
+"Plugin 'klen/python-mode' " python completion
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets' " snippets for neocomplete
 "Plugin 'nvie/vim-flake8' " pyython stnax checker
@@ -127,6 +132,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 "Rainbow parentheses
 let g:rainbow_active=1
 
+"for indentguides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors=0
+
+let g:indent_guides_guide_size = 2 " indent size
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=238
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 "airline 
 let g:airline#extension#tabline#enabled=1
 
