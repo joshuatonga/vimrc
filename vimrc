@@ -34,7 +34,7 @@ Plugin 'HTML-AutoCloseTag' " Auto close tag for html
 Plugin 'othree/html5.vim' " for html5
 Plugin 'gregsexton/MatchTag' " for html matching tags
 "Plugin 'TaskList.vim' " Todo list
-"Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 "Plugin 'klen/python-mode' " python completion
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets' " snippets for neocomplete
@@ -142,9 +142,20 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 "airline 
 let g:airline#extension#tabline#enabled=1
 
-" indent guides
-let g:indentLine_char = '|'
-let g:indentLine_enabled=1
+"settings for supertab
+let g:SuperTabDefaultCompletionType = "<C-X><C-O"
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
+"autcmd CompleteDone * pclose
+
+" for omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
 
 " For vim airline to appear
 set laststatus=2
